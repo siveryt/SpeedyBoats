@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SpeedyBoats:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SpeedyBoats_jar</output-path>
+    <root id="archive" name="SpeedyBoats.jar">
+      <element id="module-output" name="SpeedyBoats" />
+    </root>
+  </artifact>
+</component>
