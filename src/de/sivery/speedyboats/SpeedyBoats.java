@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Boat;
 import org.bukkit.entity.Entity;
@@ -19,10 +20,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Collections;
 
 public class SpeedyBoats extends JavaPlugin implements Listener {
+
+    FileConfiguration config = getConfig();
     public void onEnable() {
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats] Loading plugin...");
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Registering event listener...");
@@ -127,8 +131,17 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
 
         Bukkit.addRecipe(recipe);
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loaded Engine level 3 recipe \u2714");
+
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loading configuration...");
+        config.options().copyDefaults(true);
+        saveConfig();
+
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats] Successfully loaded! Have fun!");
 
+    }
+
+    public FileConfiguration getConfigFile() {
+        return config;
     }
 
     @EventHandler
@@ -148,13 +161,13 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
             String itemName = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
 
             if (itemType == Material.SUGAR && itemName.equals(ChatColor.RED + "Engine Level 1")){
-                boat.setVelocity(new Vector(boat.getLocation().getDirection().getX(), 0.0, boat.getLocation().getDirection().getZ()));
+                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL1")).getX(), 0.0, boat.getLocation().getDirection().getZ()));
             }
             if (itemType == Material.REDSTONE && itemName.equals(ChatColor.RED + "Engine Level 2")){
-                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(2).getX(), 0.0, boat.getLocation().getDirection().getZ()));
+                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL2")).getX(), 0.0, boat.getLocation().getDirection().getZ()));
             }
             if (itemType == Material.POPPED_CHORUS_FRUIT && itemName.equals(ChatColor.RED + "Engine Level 3")){
-                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(3).getX(), 0.0, boat.getLocation().getDirection().getZ()));
+                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL3")).getX(), 0.0, boat.getLocation().getDirection().getZ()));
             }
         }
     }
