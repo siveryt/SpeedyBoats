@@ -161,13 +161,13 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
             String itemName = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
 
             if (itemType == Material.SUGAR && itemName.equals(ChatColor.RED + "Engine Level 1")){
-                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL1")).getX(), 0.0, boat.getLocation().getDirection().getZ()));
+                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL1")).getX(), 0.0, boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL1")).getZ()));
             }
             if (itemType == Material.REDSTONE && itemName.equals(ChatColor.RED + "Engine Level 2")){
-                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL2")).getX(), 0.0, boat.getLocation().getDirection().getZ()));
+                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL2")).getX(), 0.0, boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL2")).getZ()));
             }
             if (itemType == Material.POPPED_CHORUS_FRUIT && itemName.equals(ChatColor.RED + "Engine Level 3")){
-                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL3")).getX(), 0.0, boat.getLocation().getDirection().getZ()));
+                boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL3")).getX(), 0.0, boat.getLocation().getDirection().multiply(config.getInt("multiplierLVL3")).getZ()));
             }
         }
     }
