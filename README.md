@@ -1,4 +1,4 @@
-# SpeedyBoats
+![SpeedyBoats Banner light mode](.images/banner_light.png#gh-light-mode-only)![SpeedyBoats Banner light mode](.images/banner_dark.png#gh-dark-mode-only)
 Give your Boats a little extra speed to make travelling over the ocean more enjoyable!
 
 ## About
