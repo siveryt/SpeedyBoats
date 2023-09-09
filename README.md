@@ -39,6 +39,9 @@ multiplierLVL3: 3
 
 You can set the multiplier how fast the boats with different engines can go. The values you type in are NOT blocks/seconds.
 
+## Statistics
+![bStats graph for Speedyboats](https://bstats.org/signatures/bukkit/Speedyboats.svg)
+
 ## Contributing
 Feel free to contribute to the plugin over here on GitHub. Just fork the repo, do your changes, test and submit a pull request. I'll take a look at it as soon as I can.
 

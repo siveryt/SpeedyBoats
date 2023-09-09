@@ -20,6 +20,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import de.sivery.speedyboats.Metrics;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Collections;
@@ -28,6 +30,11 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
 
     FileConfiguration config = getConfig();
     public void onEnable() {
+        // -----------------------
+        int pluginId = 19754; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
+        // -----------------------
+
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats] Loading plugin...");
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Registering event listener...");
 
