@@ -1,6 +1,7 @@
 main: de.sivery.speedyboats.SpeedyBoats
 name: SpeedyBoats
 version: '1.1'
+api-version: '1.20'
 description: Give your boats a little extra SPEEED
 author: Sivery
 website: github.com/siveryt/speedyboats
