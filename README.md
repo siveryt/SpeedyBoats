@@ -12,7 +12,7 @@ I got inspired by the [BoatInertia](https://github.com/danvanbueren/BoatInertia/
 - Enjoy
 
 ### Tested Versions
-- 1.20.1
+- 1.20.2
 
 ## Engines
 You just hold the crafted engine in your hand while steering a boat and you go way faster than without an engine.
