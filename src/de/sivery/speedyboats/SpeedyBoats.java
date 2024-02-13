@@ -76,7 +76,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         recipe.setIngredient('S', Material.SUGAR);
 
         Bukkit.addRecipe(recipe);
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loaded Engine level 1 recipe \u2714");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]          Loaded Engine level 1 recipe ✔");
 
         ItemStack lvl1Item = item;
 
@@ -109,7 +109,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         recipe.setIngredient('E', new RecipeChoice.ExactChoice(lvl1Item));
 
         Bukkit.addRecipe(recipe);
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loaded Engine level 2 recipe \u2714");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]          Loaded Engine level 2 recipe ✔");
 
         ItemStack lvl2Item = item;
 
@@ -142,7 +142,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         recipe.setIngredient('E', new RecipeChoice.ExactChoice(lvl2Item));
 
         Bukkit.addRecipe(recipe);
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loaded Engine level 3 recipe \u2714");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]          Loaded Engine level 3 recipe ✔");
 
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loading configuration...");
         config.options().copyDefaults(true);
@@ -155,7 +155,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
 
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://api.spigotmc.org/legacy/update.php?resource=111039"))
+                    .uri(URI.create("https://api.spigoasdgfwgtmc.org/legacy/update.php?resource=111039"))
                     .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -163,16 +163,16 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
 
             String remoteVersion = response.body();
 
-            getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]     Current version: " + currentVersion + "; Newest remote version: " + remoteVersion);
+            getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]          Current version: " + currentVersion + "; Newest remote version: " + remoteVersion);
 
             Boolean newVersion = !currentVersion.equalsIgnoreCase(remoteVersion);
 
             if (newVersion) {
-                getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Version " + remoteVersion + " available. Download at https://www.spigotmc.org/resources/speedyboats.111039/");
+                getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]          Version " + remoteVersion + " available. Download at https://www.spigotmc.org/resources/speedyboats.111039/");
             }
 
         } catch (Exception e) {
-            getServer().getConsoleSender().sendMessage(ChatColor.BLUE.toString() + ChatColor.BOLD +"[SpeedyBoats]     Update check failed! Please check out the GitHub repository for new releases. https://github.com/siveryt/SpeedyBoats/releases");
+            getServer().getConsoleSender().sendMessage(ChatColor.RED +"[SpeedyBoats]          Update check failed! Please check out the GitHub repository for new releases. https://github.com/siveryt/SpeedyBoats/releases");
         }
 
 
