@@ -24,6 +24,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import de.sivery.speedyboats.Metrics;
 import org.bukkit.plugin.Plugin;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Collections;
 
 public class SpeedyBoats extends JavaPlugin implements Listener {
@@ -142,6 +147,34 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loading configuration...");
         config.options().copyDefaults(true);
         saveConfig();
+
+        // Check for updates
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Checking for updates...");
+        String currentVersion = this.getDescription().getVersion();
+        try {
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("https://api.spigotmc.org/legacy/update.php?resource=111039"))
+                    .build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+
+            String remoteVersion = response.body();
+
+            getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]     Current version: " + currentVersion + "; Newest remote version: " + remoteVersion);
+
+            Boolean newVersion = !currentVersion.equalsIgnoreCase(remoteVersion);
+
+            if (newVersion) {
+                getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Version " + remoteVersion + " available. Download at https://www.spigotmc.org/resources/speedyboats.111039/");
+            }
+
+        } catch (Exception e) {
+            getServer().getConsoleSender().sendMessage(ChatColor.BLUE.toString() + ChatColor.BOLD +"[SpeedyBoats]     Update check failed! Please check out the GitHub repository for new releases. https://github.com/siveryt/SpeedyBoats/releases");
+        }
+
 
         getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats] Successfully loaded! Have fun!");
 
